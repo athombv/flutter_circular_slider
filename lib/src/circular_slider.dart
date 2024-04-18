@@ -146,6 +146,7 @@ class _SleekCircularSliderState extends State<SleekCircularSlider>
       _setupPainter();
     }
     return RawGestureDetector(
+        behavior: HitTestBehavior.translucent,
         gestures: <Type, GestureRecognizerFactory>{
           _CustomPanGestureRecognizer:
               GestureRecognizerFactoryWithHandlers<_CustomPanGestureRecognizer>(
@@ -214,12 +215,12 @@ class _SleekCircularSliderState extends State<SleekCircularSlider>
   }
 
   Widget _buildPainter({required Size size}) {
-    return CustomPaint(
+    return IgnorePointer(child: CustomPaint(
         painter: _painter,
         child: Container(
             width: size.width,
             height: size.height,
-            child: _buildChildWidget()));
+            child: _buildChildWidget())));
   }
 
   Widget? _buildChildWidget() {
